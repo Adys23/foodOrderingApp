@@ -21,10 +21,18 @@ const HeaderCartButton = (props) => {
 			return;
 		}
 		setBtnHighlighted(true);
+
+		const timer = setTimeout(() => {
+			setBtnHighlighted(false);
+		}, 300);
+
+		return () => {
+			clearTimeout(timer);
+		};
 	}, [items]);
 
 	return (
-		<button className={classes.button} onClick={props.onClick}>
+		<button className={btnClasses} onClick={props.onClick}>
 			<span className={classes.icon}>
 				<CartIcon />
 			</span>
